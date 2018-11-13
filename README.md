@@ -3,15 +3,15 @@
 Personal project to sync up vim dotfiles across different computers.
 
 ## Installation guide
-_Initial GIT setup:_
+**Initial GIT setup:**
 
-    git clone git://github.com/zt0ne/dotvim.git ~/.vim
+    git clone git@github.com:zt0ne/dotvim.git ~/.vim
 
-_Create symlinks:_
+**Create symlinks:**
 
     ln -s ~/.vim/vimrc ~/.vimrc
 
-_Switch to ~/.vim and fetch submodules:_
+**Switch to ~/.vim and fetch submodules:**
 
     cd ~/.vim
     git submodule init
