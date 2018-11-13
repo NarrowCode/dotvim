@@ -10,6 +10,7 @@ Personal project to sync up vim dotfiles across different computers.
 **Create symlinks:**
 
     ln -s ~/.vim/vimrc ~/.vimrc
+    ln -s ~/.vim/tmux.conf ~/.tmux.conf
 
 **Switch to ~/.vim and fetch submodules:**
 
