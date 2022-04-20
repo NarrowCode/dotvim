@@ -4,3 +4,9 @@
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = git@github.com:preservim/nerdtree.git
+[submodule "coc.nvim"]
+	path = coc.nvim
+	url = https://github.com/neoclide/coc.nvim
+[submodule "bundle/coc.nvim"]
+	path = bundle/coc.nvim
+	url = https://github.com/neoclide/coc.nvim

@@ -6,6 +6,13 @@ set number
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set ignorecase
+set cc=80
+set cursorline
+set showmatch
+set termguicolors
+
+colorscheme dracula
 
 filetype plugin indent on
 
