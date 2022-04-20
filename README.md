@@ -5,18 +5,22 @@ Personal project to sync up vim dotfiles across different computers.
 ## Installation guide
 **Initial GIT setup:**
 
-  git clone git@github.com:zt0ne/dotvim.git ~/.vim
+  `git clone git@github.com:NarrowCode/dotvim.git ~/.vim`
 
 **Create symlinks:**
 
+  ```bash
   ln -s ~/.vim/vimrc ~/.vimrc
   ln -s ~/.vim/tmux.conf ~/.tmux.conf
+  ```
 
 **Switch to ~/.vim and fetch submodules:**
 
+  ```bash
   cd ~/.vim
   git submodule init
   git submodule update
+  ```
 
 **Windows (nvim) configuration:**
 
@@ -27,13 +31,14 @@ Personal project to sync up vim dotfiles across different computers.
   The default path for nvim on Windows is `C:\Users\...\Appdata\Local\nvim`, 
   in order to get the plugins to work create symlinks to the repo folder.
 
-  ```
+  ```bat
   mklink /J C:\Users\...\Appdata\Local\nvim\autoload C:\Users\...\dotvim\autoload
   mklink /J C:\Users\...\Appdata\Local\nvim\bundle C:\Users\...\dotvim\bundle
   mklink C:\Users\...\Appdata\Local\nvim\init.vim C:\Users\...\dotvim\vimrc
   ```
 
 **COC Configuration:**
+
   After fetching the coc submodule, it needs to be compiled using `npm install`,
   or `yarn install`, respectively - afterwards, it should be properly recognized 
   by Pathogen.
