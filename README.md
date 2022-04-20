@@ -41,14 +41,14 @@ Personal project to sync up vim dotfiles across different computers.
   In order to retrieve additional packages, open nvim and use the following 
   commands:
   ```vim
-  # Default web plugins
+  " Default web plugins
   :CocInstall coc-json coc-tsserver coc-html coc-css
 
-  # Marketplace for finding additional packages
+  " Marketplace for finding additional packages
   :CocInstall coc-marketplace
 
-  # Search marketplace
+  " Search marketplace
   :CocList marketplace <search_term>
 
-  # Navigate marketplace with arrow keys and press TAB to choose.
+  " Navigate marketplace with arrow keys and press TAB to choose.
   ```
