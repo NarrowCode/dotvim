@@ -7,7 +7,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set ignorecase
-set cc=80
+set cc=100
 set cursorline
 set showmatch
 set termguicolors
