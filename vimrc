@@ -49,3 +49,7 @@ endif
 
 " Run codelens action
 nmap <leader>cl  <Plug>(coc-codelens-action)
+
+" Map tex to latex for coc-ltex support
+let g:coc_filetype_map = {'tex': 'latex'}
+let g:tex_flavor = 'latex'
