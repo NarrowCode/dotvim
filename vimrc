@@ -71,3 +71,9 @@ let g:tex_flavor = 'latex'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
+" Ignore node_modules when searching
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
+" Set CtrlP root directory to startup dir
+let g:ctrlp_working_path_mode = ''
+

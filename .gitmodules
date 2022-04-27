@@ -19,3 +19,6 @@
 [submodule "bundle/happy_hacking.vim"]
 	path = bundle/happy_hacking.vim
 	url = https://github.com/YorickPeterse/happy_hacking.vim.git
+[submodule "bundle/vim-paper"]
+	path = bundle/vim-paper
+	url = https://github.com/YorickPeterse/vim-paper.git
