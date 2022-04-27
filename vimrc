@@ -12,6 +12,8 @@ set cursorline
 set showmatch
 set termguicolors
 
+set mouse=a
+
 colorscheme happy_hacking
 
 filetype plugin indent on
