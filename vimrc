@@ -12,7 +12,7 @@ set cursorline
 set showmatch
 set termguicolors
 
-colorscheme dracula
+colorscheme happy_hacking
 
 filetype plugin indent on
 
@@ -55,8 +55,19 @@ else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+
 " Run codelens action
 nmap <leader>cl  <Plug>(coc-codelens-action)
 
 " Map tex to latex for coc-ltex support
 let g:tex_flavor = 'latex'
+
+" CtrlP fuzzy search
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
