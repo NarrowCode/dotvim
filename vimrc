@@ -79,3 +79,6 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 " Set CtrlP root directory to startup dir
 let g:ctrlp_working_path_mode = ''
 
+" More than 10 results in the list
+let g:ctrlp_match_window = 'results:100'
+
