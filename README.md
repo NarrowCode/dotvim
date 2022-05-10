@@ -22,6 +22,15 @@ Personal project to sync up vim dotfiles across different computers.
   git submodule update
   ```
 
+**Mac (OSX) specific configuration**
+  In the past, there were some issues with iTerm2 and vim-devicons, as documented
+  [here](https://github.com/ryanoasis/vim-devicons/issues/226).
+  Fix by grabbing Hack NF from brew:
+  ```bash
+  brew tap homebrew/cask-fonts
+  brew install --cask font-hack-nerd-font
+  ```
+
 **Windows (nvim) configuration:**
 
   There is an issue with git ssh credentials on Windows when working
@@ -48,6 +57,9 @@ Personal project to sync up vim dotfiles across different computers.
   ```vim
   " Default web plugins
   :CocInstall coc-json coc-tsserver coc-html coc-css
+
+  " Other useful extensions
+  :CocInstall coc-ltex coc-git
 
   " Marketplace for finding additional packages
   :CocInstall coc-marketplace
