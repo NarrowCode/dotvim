@@ -64,6 +64,9 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+nmap <silent> gp :CocCommand markdown-preview-enhanced.openPreview<CR>
+nmap <silent> gs :CocCommand markdown-preview-enhanced.syncPreview<CR>
+
 " 300ms update time for coc
 set updatetime=300
 

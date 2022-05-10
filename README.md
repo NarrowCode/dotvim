@@ -3,6 +3,7 @@
 Personal project to sync up vim dotfiles across different computers.
 
 ## Installation guide
+
 **Initial GIT setup:**
 
   `git clone git@github.com:NarrowCode/dotvim.git ~/.vim`
@@ -26,6 +27,7 @@ Personal project to sync up vim dotfiles across different computers.
   In the past, there were some issues with iTerm2 and vim-devicons, as documented
   [here](https://github.com/ryanoasis/vim-devicons/issues/226).
   Fix by grabbing Hack NF from brew:
+
   ```bash
   brew tap homebrew/cask-fonts
   brew install --cask font-hack-nerd-font
@@ -37,7 +39,7 @@ Personal project to sync up vim dotfiles across different computers.
   with submodules. Change the module paths found in `.git/config` to
   the https URLs and everything should work.
 
-  The default path for nvim on Windows is `C:\Users\...\Appdata\Local\nvim`, 
+  The default path for nvim on Windows is `C:\Users\...\Appdata\Local\nvim`,
   in order to get the plugins to work create symlinks to the repo folder.
 
   ```bat
@@ -49,7 +51,7 @@ Personal project to sync up vim dotfiles across different computers.
 **COC Configuration:**
 
   After fetching the coc submodule, it needs to be compiled using `npm install`,
-  or `yarn install`, respectively - afterwards, it should be properly recognized 
+  or `yarn install`, respectively - afterwards, it should be properly recognized
   by Pathogen.
 
   In order to retrieve additional packages, open nvim and use the following 
@@ -59,7 +61,7 @@ Personal project to sync up vim dotfiles across different computers.
   :CocInstall coc-json coc-tsserver coc-html coc-css
 
   " Other useful extensions
-  :CocInstall coc-ltex coc-git
+  :CocInstall coc-ltex coc-git coc-markdown-preview coc-webview coc-markdownlint
 
   " Marketplace for finding additional packages
   :CocInstall coc-marketplace
