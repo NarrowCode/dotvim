@@ -15,7 +15,9 @@ set termguicolors
 
 set mouse=a
 
-colorscheme happy_hacking
+" colorscheme happy_hacking
+let g:catppuccin_flavour = "dusk" " latte, frappe, macchiato, mocha, dusk
+colorscheme catppuccin
 
 filetype plugin indent on
 
