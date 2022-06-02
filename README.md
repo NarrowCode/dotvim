@@ -70,4 +70,7 @@ Personal project to sync up vim dotfiles across different computers.
   :CocList marketplace <search_term>
 
   " Navigate marketplace with arrow keys and press TAB to choose.
+  
+  " In :CocConfig, add:
+  "diagnostic.checkCurrentLine": true
   ```
