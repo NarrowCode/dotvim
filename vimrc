@@ -11,6 +11,7 @@ set cc=100
 set cursorline
 set showmatch
 set termguicolors
+set scrolloff=10
 
 " Clipboard
 vnoremap <C-x> "+x
