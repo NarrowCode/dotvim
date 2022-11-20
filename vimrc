@@ -27,8 +27,8 @@ set scrolloff=10
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :q<CR>
+nnoremap <Leader>w :CocCommand prettier.formatFile<cr>:w<cr>
+nnoremap <Leader>q :q<cr>
 nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <Leader>1 1gt
 nnoremap <Leader>2 1gt
@@ -38,6 +38,9 @@ nnoremap <Leader>5 1gt
 nnoremap <Leader>6 1gt
 nnoremap <Leader>t :tablast<cr>
 nnoremap <Leader>T :tabprevious<cr>
+
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument<cr>
+nnoremap <Leader>f :CocCommand prettier.formatFile<cr>
 
 " Clipboard
 vnoremap <C-x> "+x

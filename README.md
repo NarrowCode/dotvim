@@ -62,7 +62,7 @@ Personal project to sync up vim dotfiles across different computers.
   :CocInstall coc-json coc-tsserver coc-html coc-css
 
   " Other useful extensions
-  :CocInstall coc-ltex coc-git coc-markdown-preview coc-webview coc-markdownlint
+  :CocInstall coc-ltex coc-git coc-markdown-preview coc-webview coc-markdownlint coc-prettier
 
   " Marketplace for finding additional packages
   :CocInstall coc-marketplace
