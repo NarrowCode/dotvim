@@ -3,14 +3,15 @@ call plug#begin()
 Plug 'scrooloose/nerdtree'
 Plug 'catppuccin/nvim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'tribela/vim-transparent'
 call plug#end()
 
 syntax on
-set number
+set relativenumber
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -20,6 +21,14 @@ set cursorline
 set showmatch
 set termguicolors
 set scrolloff=10
+
+" Remap space to leader
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <C-p> <cmd>Telescope find_files<cr>
 
 " Clipboard
 vnoremap <C-x> "+x
@@ -31,7 +40,7 @@ set mouse=a
 " colorscheme happy_hacking
 " let g:catppuccin_flavour = "dusk" " latte, frappe, macchiato, mocha, dusk
 
-let g:material_theme_style = 'darker-community'
+let g:material_theme_style = 'darker'
 let g:material_terminal_italics = 1
 colorscheme material
 
@@ -124,10 +133,6 @@ nmap <leader>cl  <Plug>(coc-codelens-action)
 
 " Map tex to latex for coc-ltex support
 let g:tex_flavor = 'latex'
-
-" CtrlP fuzzy search
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
 
 " Ignore node_modules when searching
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'

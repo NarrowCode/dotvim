@@ -15,13 +15,14 @@ Personal project to sync up vim dotfiles across different computers.
   ln -s ~/.vim/tmux.conf ~/.tmux.conf
   ```
 
-**Switch to ~/.vim and fetch submodules:**
+**Switch to ~/.vim and fetch packages:**
 
   ```bash
   cd ~/.vim
-  git submodule init
-  git submodule update
   ```
+
+**Inside nvim:**
+  Run `:PlugInstall` to load plugins and `:PlugUpdate` to update them using vim-pack.
 
 **Mac (OSX) specific configuration**
   In the past, there were some issues with iTerm2 and vim-devicons, as documented
