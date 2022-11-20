@@ -11,6 +11,7 @@ Plug 'tribela/vim-transparent'
 call plug#end()
 
 syntax on
+set number
 set relativenumber
 set tabstop=2
 set shiftwidth=2
@@ -29,6 +30,14 @@ let mapleader=" "
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <Leader>1 1gt
+nnoremap <Leader>2 1gt
+nnoremap <Leader>3 1gt
+nnoremap <Leader>4 1gt
+nnoremap <Leader>5 1gt
+nnoremap <Leader>6 1gt
+nnoremap <Leader>t :tablast<cr>
+nnoremap <Leader>T :tabprevious<cr>
 
 " Clipboard
 vnoremap <C-x> "+x
@@ -45,6 +54,23 @@ let g:material_terminal_italics = 1
 colorscheme material
 
 filetype plugin indent on
+
+lua << EOF
+require('telescope').setup{
+  defaults = {
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      '--ignore-file',
+      '.gitignore'
+    },
+}}
+EOF
 
 " Nerdtree Config
 nnoremap <C-n> :NERDTree<CR>
@@ -90,6 +116,17 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+nnoremap <silent> gh :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('gh', 'in')
+  endif
+endfunction
+
 
 nmap <silent> gp :CocCommand markdown-preview-enhanced.openPreview<CR>
 nmap <silent> gs :CocCommand markdown-preview-enhanced.syncPreview<CR>
