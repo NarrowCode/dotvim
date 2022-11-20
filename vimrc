@@ -38,6 +38,8 @@ nnoremap <Leader>5 1gt
 nnoremap <Leader>6 1gt
 nnoremap <Leader>t :tablast<cr>
 nnoremap <Leader>T :tabprevious<cr>
+nnoremap <Leader>p "0p
+nnoremap <Leader>y "0y
 
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument<cr>
 nnoremap <Leader>f :CocCommand prettier.formatFile<cr>
@@ -57,23 +59,6 @@ let g:material_terminal_italics = 1
 colorscheme material
 
 filetype plugin indent on
-
-lua << EOF
-require('telescope').setup{
-  defaults = {
-    vimgrep_arguments = {
-      'rg',
-      '--color=never',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case',
-      '--ignore-file',
-      '.gitignore'
-    },
-}}
-EOF
 
 " Nerdtree Config
 nnoremap <C-n> :NERDTree<CR>
@@ -140,14 +125,7 @@ set updatetime=300
 " Renaming
 nmap <leader>rn <Plug>(coc-rename)
 
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ CheckBackspace() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
 
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -182,4 +160,21 @@ let g:ctrlp_working_path_mode = ''
 
 " More than 10 results in the list
 let g:ctrlp_match_window = 'results:100'
+
+lua << EOF
+require('telescope').setup{
+  defaults = {
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      '--ignore-file',
+      '.gitignore'
+    },
+}}
+EOF
 
