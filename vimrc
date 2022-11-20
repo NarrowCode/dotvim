@@ -1,5 +1,13 @@
-call pathogen#infect()
-call pathogen#helptags()
+" use :PlugInstall to install dependencies
+call plug#begin()
+Plug 'scrooloose/nerdtree'
+Plug 'catppuccin/nvim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+call plug#end()
 
 syntax on
 set number
@@ -21,8 +29,11 @@ vnoremap <C-v> "+v
 set mouse=a
 
 " colorscheme happy_hacking
-let g:catppuccin_flavour = "dusk" " latte, frappe, macchiato, mocha, dusk
-colorscheme catppuccin
+" let g:catppuccin_flavour = "dusk" " latte, frappe, macchiato, mocha, dusk
+
+let g:material_theme_style = 'darker-community'
+let g:material_terminal_italics = 1
+colorscheme material
 
 filetype plugin indent on
 
