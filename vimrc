@@ -19,7 +19,11 @@ set expandtab
 set ignorecase
 set cursorline
 set showmatch
-set termguicolors
+
+if (has('termguicolors'))
+  set termguicolors
+endif
+
 set scrolloff=10
 
 " Remap space to leader
@@ -53,9 +57,14 @@ set mouse=a
 " colorscheme happy_hacking
 " let g:catppuccin_flavour = "dusk" " latte, frappe, macchiato, mocha, dusk
 
-let g:material_theme_style = 'darker'
+let g:material_theme_style = 'default'
 let g:material_terminal_italics = 1
 colorscheme material
+
+" Custom override for material darker
+" let s:line_highlight = { 'gui': '#384c54', 'cterm': 68 }
+hi CursorLine guibg=#0d0e13 ctermbg=68
+hi CursorLineNr guifg=#8d9cd2 ctermfg=244
 
 filetype plugin indent on
 
