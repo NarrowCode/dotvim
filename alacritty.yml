@@ -416,14 +416,14 @@ selection:
 
 #cursor:
 # Cursor style
-#style:
+style:
 # Cursor shape
 #
 # Values for `shape`:
 #   - ▇ Block
 #   - _ Underline
 #   - | Beam
-#shape: Block
+shape: "Block"
 
 # Cursor blinking state
 #
@@ -432,7 +432,7 @@ selection:
 #   - Off: Disable blinking by default
 #   - On: Enable blinking by default
 #   - Always: Force the cursor to always blink
-#blinking: Off
+blinking: "On"
 
 # Vi mode cursor style
 #
@@ -482,7 +482,7 @@ selection:
 #working_directory: "$HOME"
 
 # Send ESC (\x1b) before characters when alt is pressed.
-#alt_send_esc: true
+alt_send_esc: false
 
 # Offer IPC using `alacritty msg` (unix only)
 #ipc_socket: true

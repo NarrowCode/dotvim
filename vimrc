@@ -32,7 +32,7 @@ let mapleader=" "
 
 nnoremap <Leader>w :CocCommand prettier.formatFile<cr>:w<cr>
 nnoremap <Leader>q :q<cr>
-nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <C-p> <cmd>Telescope find_files hidden=true<cr>
 nnoremap <Leader>1 1gt
 nnoremap <Leader>2 1gt
 nnoremap <Leader>3 1gt
