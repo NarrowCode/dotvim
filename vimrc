@@ -3,11 +3,13 @@ call plug#begin()
 Plug 'scrooloose/nerdtree'
 Plug 'catppuccin/nvim'
 Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'tribela/vim-transparent'
+Plug 'goolord/alpha-nvim'
 call plug#end()
 
 syntax on
@@ -75,8 +77,8 @@ nnoremap <C-f> :NERDTreeFind<CR>
 nnoremap <leader>n :NERDTreeFocus<CR>
 
 " Open NERDTree on startup if no arg
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Exit Vim if NERDTree is the only open window remaining
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
@@ -154,6 +156,10 @@ endfunction
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
+" Jump to next problem
+nnoremap <silent><leader>p :call CocAction('diagnosticNext')<CR>
+nnoremap <silent><leader>P :call CocAction('diagnosticPrevious')<CR>
+
 " Run codelens action
 nmap <leader>cl  <Plug>(coc-codelens-action)
 
@@ -169,6 +175,9 @@ let g:ctrlp_working_path_mode = ''
 " More than 10 results in the list
 let g:ctrlp_match_window = 'results:100'
 
+lua << EOF
+  require("alpha-setup")
+EOF
 lua << EOF
 require('telescope').setup{
   defaults = {
@@ -191,3 +200,6 @@ require('telescope').setup{
 }
 EOF
 
+"lua << EOF
+"require'alpha'.setup(require 'alpha.themes.startify'.config)
+"EOF
