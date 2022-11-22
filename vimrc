@@ -172,6 +172,9 @@ let g:ctrlp_match_window = 'results:100'
 lua << EOF
 require('telescope').setup{
   defaults = {
+    file_ignore_patterns = {
+      ".git", ".yarn", "dist", "yarn.lock", "*.pdf"
+    },
     vimgrep_arguments = {
       'rg',
       '--color=never',
