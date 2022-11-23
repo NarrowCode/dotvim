@@ -50,9 +50,10 @@ command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument<cr>
 nnoremap <Leader>f :CocCommand prettier.formatFile<cr>
 
 " Clipboard
-vnoremap <C-x> "+x
-vnoremap <C-c> "+y
-vnoremap <C-v> "+v
+nnoremap <C-v> <Nop>
+inoremap <C-x> "+x
+inoremap <C-c> "+y
+inoremap <C-v> "+v
 
 set mouse=a
 
@@ -104,7 +105,7 @@ nnoremap <C-l> <C-w>l
 
 " Code completion for coc
 if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
+  inoremap <silent><expr> <c-g> coc#refresh()
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
