@@ -35,6 +35,9 @@ let mapleader=" "
 nnoremap <Leader>w :CocCommand prettier.formatFile<cr>:w<cr>
 nnoremap <Leader>q :q<cr>
 nnoremap <C-p> <cmd>Telescope find_files hidden=true<cr>
+nnoremap <Leader>ff <cmd>Telescope find_files hidden=true<cr>
+nnoremap <Leader>fg <cmd>Telescope live_grep hidden=true<cr>
+nnoremap <Leader>fh <cmd>Telescope help_tags hidden=true<cr>
 nnoremap <Leader>1 1gt
 nnoremap <Leader>2 1gt
 nnoremap <Leader>3 1gt
@@ -45,6 +48,10 @@ nnoremap <Leader>t :tablast<cr>
 nnoremap <Leader>T :tabprevious<cr>
 nnoremap <Leader>p "0p
 nnoremap <Leader>y "0y
+nnoremap <Leader>< :vertical resize -5<cr>
+nnoremap <Leader>> :vertical resize +5<cr>
+nnoremap <Leader>+ :resize +5<cr>
+nnoremap <Leader>- :resize -5<cr>
 
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument<cr>
 nnoremap <Leader>f :CocCommand prettier.formatFile<cr>
@@ -104,7 +111,7 @@ nnoremap <C-l> <C-w>l
 
 " Code completion for coc
 if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
+  inoremap <silent><expr> <c-g> coc#refresh()
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
@@ -182,7 +189,7 @@ lua << EOF
 require('telescope').setup{
   defaults = {
     file_ignore_patterns = {
-      ".git", ".yarn", "dist", "yarn.lock", "*.pdf"
+      ".git/", "**/.yarn/*", "dist", "yarn.lock", "*.pdf"
     },
     vimgrep_arguments = {
       'rg',
