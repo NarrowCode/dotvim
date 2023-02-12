@@ -11,9 +11,13 @@
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
-nmap <SPACE> :action ReformatCode<CR> :write<CR>
+#nnoremap <Leader>w :action ReformatCode<CR> :write<CR>
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<cr>
+nnoremap <Leader>rn :action RenameElement<CR>
 
 nmap gh <Action>(QuickJavaDoc)
+nmap ge <Action>(ShowErrorDescription)
 
 nmap <Leader>y "+y
 nmap <Leader>d "+d
