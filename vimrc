@@ -1,6 +1,7 @@
 " use :PlugInstall to install dependencies
 call plug#begin()
 Plug 'scrooloose/nerdtree'
+Plug 'git@github.com:lukas-reineke/indent-blankline.nvim.git'
 Plug 'catppuccin/nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -57,10 +58,13 @@ command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument<cr>
 nnoremap <Leader>f :CocCommand prettier.formatFile<cr>
 
 " Clipboard
-nnoremap <C-v> <Nop>
-inoremap <C-x> "+x
-inoremap <C-c> "+y
-inoremap <C-v> "+v
+vnoremap <C-x> "+x
+vnoremap <C-c> "+y
+vnoremap <C-v> "+p
+" Clipboard (insert)
+inoremap <C-x> <Esc>"+x
+inoremap <C-c> <Esc>"+y
+inoremap <C-v> <Esc>"+p
 
 set mouse=a
 
@@ -208,6 +212,15 @@ require('telescope').setup{
 }
 EOF
 
+lua << EOF
+  require("indent_blankline").setup {
+      -- for example, context is off by default, use this to turn it on
+      show_current_context = true,
+      show_current_context_start = true,
+  }
+EOF
+
 "lua << EOF
 "require'alpha'.setup(require 'alpha.themes.startify'.config)
 "EOF
+
