@@ -1,29 +1,17 @@
+" Import defaults and then override them for Jetbrains specifics
+:source ~/.vimrc
+
 :set number
 :set ignorecase
-:set clipboard=unnamed
 :set showmode
 :set scrolloff=8
 :set visualbell
 :set noerrorbells
 
-# Use SPACE as <Leader>
-nnoremap <SPACE> <Nop>
-let mapleader=" "
-
-#nnoremap <Leader>w :action ReformatCode<CR> :write<CR>
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :q<cr>
-nnoremap <Leader>rn :action RenameElement<CR>
+nnoremap <leader>w :action ReformatCode<CR> :write<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<cr>
+nnoremap <leader>rn :action RenameElement<CR>
 
 nmap gh <Action>(QuickJavaDoc)
 nmap ge <Action>(ShowErrorDescription)
-
-nmap <Leader>y "+y
-nmap <Leader>d "+d
-nmap <Leader>P "+P
-nmap <Leader>p "+p
-
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-vmap <Leader>P "+P
-vmap <Leader>p "+p
