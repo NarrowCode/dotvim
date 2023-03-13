@@ -43,7 +43,11 @@ return require('packer').startup(function(use)
   end }
 
   -- And the 2nd best
-  use { "morhetz/gruvbox", as = "gruvbox", config = function() 
+  use { "ellisonleao/gruvbox.nvim", as = "gruvbox", config = function() 
+    require("gruvbox").setup({
+      contrast = "hard",
+      transparent_mode = true,
+    })
     vim.cmd.colorscheme "gruvbox"
   end }
 
