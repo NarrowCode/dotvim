@@ -13,5 +13,16 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>rn :action RenameElement<CR>
 
+" Essential
 nmap gh <Action>(QuickJavaDoc)
 nmap ge <Action>(ShowErrorDescription)
+
+" Best movement ever
+nnoremap g[ <Action>(GotoNextError)
+nnoremap g] <Action>(GotoPreviousError)
+
+" Built-in search looks nicer
+nnoremap / <ESC>:action Find<CR>
+
+" Refresh
+nnoremap \r <ESC>:source ~/.ideavimrc<CR>

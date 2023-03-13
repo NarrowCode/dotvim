@@ -4,6 +4,8 @@ vim.opt.hlsearch = false
 vim.opt.updatetime = 50
 vim.opt.termguicolors = true
 
+vim.opt.bg = dark
+
 vim.swapfile = false
 
 -- vim.opt.undofile = true

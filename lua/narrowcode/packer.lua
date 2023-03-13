@@ -39,7 +39,12 @@ return require('packer').startup(function(use)
     require("catppuccin").setup({
       flavour = "mocha",
     })
-    vim.cmd.colorscheme "catppuccin"
+    -- vim.cmd.colorscheme "catppuccin"
+  end }
+
+  -- And the 2nd best
+  use { "morhetz/gruvbox", as = "gruvbox", config = function() 
+    vim.cmd.colorscheme "gruvbox"
   end }
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
