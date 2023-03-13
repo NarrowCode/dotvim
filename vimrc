@@ -9,6 +9,7 @@ set expandtab
 set ignorecase
 set cursorline
 set showmatch
+set fileformat=unix
 
 if (has('termguicolors'))
   set termguicolors

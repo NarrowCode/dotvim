@@ -2,7 +2,39 @@
 
 Personal project to sync up vim dotfiles across different computers.
 
-## Installation guide
+## Installation (LUA)
+
+**Symlinks, Packer (MacOS):**
+
+  ```bash
+  ln -s ~/.vim/vimrc ~/.vimrc
+  ln -s ~/.vim/tmux.conf ~/.tmux.conf
+  ln -s ~/.ideavimrc ~/.vim/.ideavimrc
+
+  ln -s ~/.config/nvim ~/.vim
+  git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+    ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+  ```
+
+**Symlinks, Packer (Windows):**
+Use admin powershell to avoid having a bad time (junction creation).
+
+  ```bash
+  cmd /c mklink ~/.ideavimrc ~/.vim/.ideavimrc
+  cmd /c mklink /J ~/AppData/Local/nvim ~/.vim
+  git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
+  ```
+
+**First launch:**
+Run `PackerInstall` to load packages :)
+
+
+
+---
+
+
+
+## Installation guide (V1) - Deprecated
 
 **Initial GIT setup:**
 
