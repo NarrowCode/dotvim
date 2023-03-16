@@ -97,4 +97,13 @@ return require('packer').startup(function(use)
     }
   }
 
+  -- Lua
+  use {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup {
+      }
+    end
+  }
+
 end)
