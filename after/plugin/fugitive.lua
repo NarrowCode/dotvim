@@ -1,1 +1,2 @@
-vim.keymap.set("n", "<leader>gs", vim.cmd.Git);
+-- Currently disabled to play with Neogit
+-- vim.keymap.set("n", "<leader>gs", vim.cmd.Git);

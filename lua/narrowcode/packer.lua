@@ -97,13 +97,18 @@ return require('packer').startup(function(use)
     }
   }
 
-  -- Lua
   use {
     "folke/zen-mode.nvim",
     config = function()
       require("zen-mode").setup {
       }
     end
+  }
+
+  use { 'TimUntersberger/neogit', requires = {
+    'nvim-lua/plenary.nvim',
+    'sindrets/diffview.nvim'
+    }
   }
 
 end)
