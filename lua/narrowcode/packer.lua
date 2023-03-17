@@ -111,4 +111,15 @@ return require('packer').startup(function(use)
     }
   }
 
+  use({
+    "ErichDonGubler/lsp_lines.nvim",
+  })
+
+  use {
+    "folke/trouble.nvim",
+    requires = "nvim-tree/nvim-web-devicons",
+  }
+
+  use "lukas-reineke/indent-blankline.nvim"
+
 end)

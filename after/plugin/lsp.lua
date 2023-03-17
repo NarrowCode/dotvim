@@ -19,7 +19,6 @@ lsp.configure('lua-language-server', {
     }
 })
 
-
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -42,11 +41,13 @@ lsp.set_preferences({
     suggest_lsp_servers = false,
     sign_icons = {
         error = '❌',
-        warn = '🦜',
+        warn = '🔔',
         hint = '👋',
         info = '🥸'
     }
 })
+
+
 
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
@@ -63,10 +64,27 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
   vim.keymap.set("i", "<C-Space>", function() vim.lsp.buf.completion() end, opts)
+  vim.keymap.set("n", "<leader>gl", function() require("lsp_lines").toggle() end, opts)
 end)
 
 lsp.setup()
 
 vim.diagnostic.config({
-    virtual_text = true
+  -- No virtual text, we're using lsp_lines for that.
+  virtual_text = false, 
+  virtual_lines = true,
+
+  float = {
+    -- Focusable so I can copy / paste from diag folds.
+    focusable = true,
+  }
 })
+
+require("lsp_lines").setup()
+
+
+-- Format on save
+vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+
+
