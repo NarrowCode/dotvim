@@ -82,6 +82,20 @@ return require('packer').startup(function(use)
     }
   }
 
+  use({
+      "jose-elias-alvarez/null-ls.nvim",
+      config = function()
+          require("null-ls").setup({
+            sources = {
+              null_ls.builtins.formatting.stylua,
+              null_ls.builtins.completion.spell,
+              null_ls.builtins.formatting.prettier_eslint
+            }
+          })
+      end,
+      requires = { "nvim-lua/plenary.nvim" },
+  })
+
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
