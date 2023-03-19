@@ -83,8 +83,9 @@ vim.diagnostic.config({
 require("lsp_lines").setup()
 
 
+-- local null_ls = require("null-ls")
 -- Format on save
-vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+-- vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
+-- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
 
 
