@@ -42,14 +42,14 @@ return require('packer').startup(function(use)
     require("catppuccin").setup({
       flavour = "mocha",
     })
-    -- vim.cmd.colorscheme "catppuccin"
+    --vim.cmd.colorscheme "catppuccin"
   end }
 
   -- And the 2nd best
   use { "ellisonleao/gruvbox.nvim", as = "gruvbox", config = function() 
     require("gruvbox").setup({
       contrast = "hard",
-      transparent_mode = true,
+      --transparent_mode = true,
     })
     vim.cmd.colorscheme "gruvbox"
   end }
