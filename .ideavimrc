@@ -18,11 +18,22 @@ nmap gh <Action>(QuickJavaDoc)
 nmap ge <Action>(ShowErrorDescription)
 
 " Best movement ever
-nnoremap g[ <Action>(GotoNextError)
-nnoremap g] <Action>(GotoPreviousError)
+nmap g[ <Action>(GotoNextError)
+nmap g] <Action>(GotoPreviousError)
 
 " Built-in search looks nicer
 nnoremap / <ESC>:action Find<CR>
 
 " Refresh
 nnoremap \r <ESC>:source ~/.ideavimrc<CR>
+
+" HarpoonIJ
+nmap <leader>a <Action>(AddToHarpoon)
+nmap <leader>1 <Action>(GotoHarpoon1)
+nmap <leader>2 <Action>(GotoHarpoon2)
+nmap <leader>3 <Action>(GotoHarpoon3)
+nmap <leader>4 <Action>(GotoHarpoon4)
+nmap <leader>5 <Action>(GotoHarpoon5)
+nmap <C-e> <Action>(ShowHarpoon)
+
+
