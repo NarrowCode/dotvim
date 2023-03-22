@@ -54,6 +54,19 @@ return require('packer').startup(function(use)
     vim.cmd.colorscheme "gruvbox"
   end }
 
+  -- ... and one to play around with
+  use { 
+    'olivercederborg/poimandres.nvim',
+    config = function()
+      require('poimandres').setup {
+        -- leave this setup function empty for default config
+        -- or refer to the configuration section
+        -- for configuration options
+      }
+      vim.cmd.colorscheme "poimandres"
+    end
+  }
+
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('nvim-treesitter/playground')
   use('theprimeagen/harpoon')
