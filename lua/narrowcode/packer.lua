@@ -139,5 +139,22 @@ return require('packer').startup(function(use)
   }
 
   use "lukas-reineke/indent-blankline.nvim"
+  
+  use {
+    "uga-rosa/ccc.nvim",
+    config = function()
+      require("ccc").setup({
+        highlighter = {
+          auto_enable = true,
+          lsp = true,
+        }
+      })
+    end
+  }     
+  use {'nvim-orgmode/orgmode', config = function()
+    require('orgmode').setup{}
+  end
+  }
+
 
 end)
