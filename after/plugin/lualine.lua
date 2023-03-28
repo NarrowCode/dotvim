@@ -1,5 +1,5 @@
 require("lualine").setup({
   options = {
-    theme = "gruvbox" --"modus-vivendi"
+    theme = "gruvbox-material" --"modus-vivendi"
   }
 })
