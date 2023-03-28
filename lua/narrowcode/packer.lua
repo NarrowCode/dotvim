@@ -38,21 +38,9 @@ return require('packer').startup(function(use)
   }
 
   -- The best color scheme
-  use { "catppuccin/nvim", as = "catppuccin", config = function() 
-    require("catppuccin").setup({
-      flavour = "mocha",
-    })
-    --vim.cmd.colorscheme "catppuccin"
-  end }
+  use { "catppuccin/nvim", as = "catppuccin" }
 
-  -- And the 2nd best
-  use { "ellisonleao/gruvbox.nvim", as = "gruvbox", config = function() 
-    require("gruvbox").setup({
-      contrast = "hard",
-      --transparent_mode = true,
-    })
-    vim.cmd.colorscheme "gruvbox"
-  end }
+  use { "luisiacc/gruvbox-baby" }
 
   -- ... and one to play around with
   use { 
@@ -63,7 +51,7 @@ return require('packer').startup(function(use)
         -- or refer to the configuration section
         -- for configuration options
       }
-      vim.cmd.colorscheme "poimandres"
+      --vim.cmd.colorscheme "poimandres"
     end
   }
 
@@ -150,11 +138,26 @@ return require('packer').startup(function(use)
         }
       })
     end
-  }     
-  use {'nvim-orgmode/orgmode', config = function()
-    require('orgmode').setup{}
-  end
   }
 
+  use {
+    "nvim-neorg/neorg",
+    run = ":Neorg sync-parsers",
+    config = function()
+      require('neorg').setup {
+        load = {
+          ["core.defaults"] = {}, -- Loads default behaviour
+          ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
+          ["core.norg.dirman"] = { -- Manages Neorg workspaces
+          config = {
+            workspaces = {
+              notes = "~/org",
+            },
+          },
+        },
+      },
+    }
+  end
+}
 
 end)
