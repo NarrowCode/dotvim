@@ -5,9 +5,9 @@
 
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
     vim.cmd [[packadd packer.nvim]]
     return true
   end
@@ -31,8 +31,8 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
     -- or                            , branch = '0.1.x',
     requires = {
-      {'nvim-lua/plenary.nvim'},
-      {'nvim-tree/nvim-web-devicons'},
+      { 'nvim-lua/plenary.nvim' },
+      { 'nvim-tree/nvim-web-devicons' },
     }
 
   }
@@ -40,10 +40,10 @@ return require('packer').startup(function(use)
   -- The best color scheme
   use { "catppuccin/nvim", as = "catppuccin" }
 
-  use { "luisiacc/gruvbox-baby" }
+  use { "sainnhe/gruvbox-material" }
 
   -- ... and one to play around with
-  use { 
+  use {
     'olivercederborg/poimandres.nvim',
     config = function()
       require('poimandres').setup {
@@ -55,7 +55,7 @@ return require('packer').startup(function(use)
     end
   }
 
-  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+  use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
   use('nvim-treesitter/playground')
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
@@ -65,27 +65,27 @@ return require('packer').startup(function(use)
     branch = 'v1.x',
     requires = {
       -- LSP Support
-      {'neovim/nvim-lspconfig'},             -- Required
-      {'williamboman/mason.nvim'},           -- Optional
-      {'williamboman/mason-lspconfig.nvim'}, -- Optional
+      { 'neovim/nvim-lspconfig' },             -- Required
+      { 'williamboman/mason.nvim' },           -- Optional
+      { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
       -- Autocompletion
-      {'hrsh7th/nvim-cmp'},         -- Required
-      {'hrsh7th/cmp-nvim-lsp'},     -- Required
-      {'hrsh7th/cmp-buffer'},       -- Optional
-      {'hrsh7th/cmp-path'},         -- Optional
-      {'saadparwaiz1/cmp_luasnip'}, -- Optional
-      {'hrsh7th/cmp-nvim-lua'},     -- Optional
+      { 'hrsh7th/nvim-cmp' },         -- Required
+      { 'hrsh7th/cmp-nvim-lsp' },     -- Required
+      { 'hrsh7th/cmp-buffer' },       -- Optional
+      { 'hrsh7th/cmp-path' },         -- Optional
+      { 'saadparwaiz1/cmp_luasnip' }, -- Optional
+      { 'hrsh7th/cmp-nvim-lua' },     -- Optional
 
       -- Snippets
-      {'L3MON4D3/LuaSnip'},             -- Required
-      {'rafamadriz/friendly-snippets'}, -- Optional
+      { 'L3MON4D3/LuaSnip' },             -- Required
+      { 'rafamadriz/friendly-snippets' }, -- Optional
     }
   }
 
   use({
-      "jose-elias-alvarez/null-ls.nvim",
-      requires = { "nvim-lua/plenary.nvim" },
+    "jose-elias-alvarez/null-ls.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
   })
 
   use {
@@ -96,7 +96,7 @@ return require('packer').startup(function(use)
   use {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
-    requires = { 
+    requires = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
@@ -114,7 +114,7 @@ return require('packer').startup(function(use)
   use { 'TimUntersberger/neogit', requires = {
     'nvim-lua/plenary.nvim',
     'sindrets/diffview.nvim'
-    }
+  }
   }
 
   use({
@@ -127,7 +127,7 @@ return require('packer').startup(function(use)
   }
 
   use "lukas-reineke/indent-blankline.nvim"
-  
+
   use {
     "uga-rosa/ccc.nvim",
     config = function()
@@ -146,18 +146,17 @@ return require('packer').startup(function(use)
     config = function()
       require('neorg').setup {
         load = {
-          ["core.defaults"] = {}, -- Loads default behaviour
+          ["core.defaults"] = {},       -- Loads default behaviour
           ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
-          ["core.norg.dirman"] = { -- Manages Neorg workspaces
-          config = {
-            workspaces = {
-              notes = "~/org",
+          ["core.norg.dirman"] = {      -- Manages Neorg workspaces
+            config = {
+              workspaces = {
+                notes = "~/org",
+              },
             },
           },
         },
-      },
-    }
-  end
-}
-
+      }
+    end
+  }
 end)

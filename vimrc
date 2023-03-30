@@ -15,6 +15,8 @@ if (has('termguicolors'))
   set termguicolors
 endif
 
+set background=dark
+
 set scrolloff=10
 
 " Space for the win
@@ -37,18 +39,6 @@ nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 
 set mouse=a
-
-" Move split panes left / bot / top / right
-nnoremap <A-h> <C-W>H
-nnoremap <A-j> <C-W>J
-nnoremap <A-k> <C-W>K
-nnoremap <A-l> <C-W>L
-
-" Swap between panes left / bot / top / right
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
 
 " Move visual buffer around
 vnoremap J :m '>+1<CR>gv=gv

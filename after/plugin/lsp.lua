@@ -10,17 +10,17 @@ lsp.ensure_installed({
 
 -- Fix Undefined global 'vim'
 lsp.configure('lua-language-server', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }
+      }
     }
+  }
 })
 
 local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
   ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
@@ -39,19 +39,19 @@ lsp.setup_nvim_cmp({
 })
 
 lsp.set_preferences({
-    suggest_lsp_servers = false,
-    sign_icons = {
-        error = '❌',
-        warn = '🔔',
-        hint = '👋',
-        info = '🥸'
-    }
+  suggest_lsp_servers = false,
+  sign_icons = {
+    error = '❌',
+    warn = '🔔',
+    hint = '👋',
+    info = '🥸'
+  }
 })
 
 
 
 lsp.on_attach(function(client, bufnr)
-  local opts = {buffer = bufnr, remap = false}
+  local opts = { buffer = bufnr, remap = false }
 
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set("n", "gh", function() vim.lsp.buf.hover() end, opts)
@@ -66,15 +66,24 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
   vim.keymap.set("i", "<C-Space>", function() vim.lsp.buf.completion() end, opts)
   vim.keymap.set("n", "<leader>gl", function() require("lsp_lines").toggle() end, opts)
+
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    buffer = bufnr,
+    callback = function()
+      --vim.cmd("LspZeroFormat", { silent = true })
+      -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+      vim.lsp.buf.format({ bufnr = bufnr })
+      --vim.lsp.buf.formatting_sync()
+    end,
+  })
 end)
 
 lsp.setup()
 
 vim.diagnostic.config({
   -- No virtual text, we're using lsp_lines for that.
-  virtual_text = false, 
+  virtual_text = false,
   virtual_lines = true,
-
   float = {
     -- Focusable so I can copy / paste from diag folds.
     focusable = true,
@@ -88,5 +97,3 @@ require("lsp_lines").setup()
 -- Format on save
 -- vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
 -- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
-
-
