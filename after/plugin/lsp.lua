@@ -2,10 +2,18 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
+require 'nvim-treesitter.install'.compilers = { "zig", "gcc" }
+
 lsp.ensure_installed({
   'tsserver',
   'eslint',
   'rust_analyzer',
+})
+
+vim.filetype.add({
+  extension = {
+    astro = "astro"
+  }
 })
 
 -- Fix Undefined global 'vim'
