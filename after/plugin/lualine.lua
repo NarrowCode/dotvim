@@ -1,5 +1,1 @@
-require("lualine").setup({
-  options = {
-    theme = "gruvbox-material" --"modus-vivendi"
-  }
-})
+-- moved to colors.lua
