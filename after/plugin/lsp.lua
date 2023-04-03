@@ -72,6 +72,7 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>gr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+  vim.keymap.set("i", "<C-s>", function() vim.lsp.buf.completion() end, opts)
   vim.keymap.set("i", "<C-Space>", function() vim.lsp.buf.completion() end, opts)
   vim.keymap.set("n", "<leader>gl", function() require("lsp_lines").toggle() end, opts)
 

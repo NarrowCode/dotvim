@@ -7,6 +7,7 @@ require("null-ls").setup({
     null_ls.builtins.formatting.prettier, -- Make sure prettier is on the $PATH.
     null_ls.builtins.formatting.rustfmt
   },
+  debug = true
   -- debug = true, -- Enable and use :NullLsLog to debug.
   -- you can reuse a shared lspconfig on_attach callback here
 })
