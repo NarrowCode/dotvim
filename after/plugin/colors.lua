@@ -23,6 +23,7 @@ function ApplyColorScheme(color)
   if (color == "catppuccin") then
     require("catppuccin").setup({
       flavour = "latte",
+      transparent_background = true,
     })
 
     require("lualine").setup({
