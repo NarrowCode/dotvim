@@ -160,5 +160,7 @@ return require('packer').startup(function(use)
     end
   }
 
+  use { "onsails/lspkind-nvim" }
+
   use("github/copilot.vim")
 end)

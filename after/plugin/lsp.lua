@@ -1,4 +1,5 @@
 local lsp = require("lsp-zero")
+local lspkind = require('lspkind')
 
 lsp.preset("recommended")
 
@@ -31,7 +32,9 @@ local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+  ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
   ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+  ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
   ['<C-y>'] = cmp.mapping.confirm({ select = true }),
   ["<C-Space>"] = cmp.mapping.complete(),
   -- Add compatibility fallback for terminals that can't handle Ctrl-Space
@@ -43,7 +46,46 @@ cmp_mappings['<CR>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
+  mapping = cmp_mappings,
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'text_symbol',
+      maxWidth = 50,
+      ellipsis_char = "...",
+      symbol_map = {
+        Text = "",
+        Method = "",
+        Function = "",
+        Constructor = "",
+        Field = "ﰠ",
+        Variable = "",
+        Class = "ﴯ",
+        Interface = "",
+        Module = "",
+        Property = "ﰠ",
+        Unit = "塞",
+        Value = "",
+        Enum = "",
+        Keyword = "",
+        Snippet = "",
+        Color = "",
+        File = "",
+        Reference = "",
+        Folder = "",
+        EnumMember = "",
+        Constant = "",
+        Struct = "פּ",
+        Event = "",
+        Operator = "",
+        TypeParameter = ""
+      },
+      before = function(entry, vim_item)
+        vim_item.kind = lspkind.symbolic(vim_item.kind)
+
+        return vim_item
+      end
+    })
+  },
 })
 
 lsp.set_preferences({
