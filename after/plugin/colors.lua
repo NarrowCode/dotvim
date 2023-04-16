@@ -71,13 +71,17 @@ function ApplyColorScheme(color)
   --vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
-vim.keymap.set("n", "<leader>lt", function() ApplyColorScheme("catppuccin") end);
-vim.keymap.set("n", "<leader>dt", function() ApplyColorScheme("gruvbox-material") end);
+vim.keymap.set("n", "<leader>lt", function() ApplyColorScheme("light") end);
+vim.keymap.set("n", "<leader>dt", function() ApplyColorScheme("dark") end);
 
--- Initial colorscheme is based on current system time.
-local hour = os.date("*t").hour;
-if (hour > 6 and hour < 22) then
-  ApplyColorScheme("light")
-else
-  ApplyColorScheme("dark")
+function ApplyColorSchemeAuto()
+  -- Initial colorscheme is based on current system time.
+  local hour = os.date("*t").hour;
+  if (hour > 6 and hour < 22) then
+    ApplyColorScheme("light")
+  else
+    ApplyColorScheme("dark")
+  end
 end
+
+ApplyColorSchemeAuto()
