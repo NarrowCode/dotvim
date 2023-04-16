@@ -1,9 +1,9 @@
 function ApplyColorScheme(color)
   vim.opt.termguicolors = true
   if (color == "light") then
-    color = "catppuccin";
+    color = "dayfox";
   elseif (color == "dark") then
-    color = "gruvbox-material";
+    color = "nordfox";
   else
     color = color or "gruvbox-material"
   end
@@ -16,6 +16,34 @@ function ApplyColorScheme(color)
     require("lualine").setup({
       options = {
         theme = "gruvbox-material", --"modus-vivendi"
+      }
+    })
+  end
+
+  if (color == "nordfox") then
+    require("nightfox").setup({
+      options = {
+        transparent = true,
+      }
+    })
+
+    require("lualine").setup({
+      options = {
+        theme = "nordfox",
+      }
+    })
+  end
+
+  if (color == "dayfox") then
+    require("nightfox").setup({
+      options = {
+        transparent = true,
+      }
+    })
+
+    require("lualine").setup({
+      options = {
+        theme = "dayfox",
       }
     })
   end

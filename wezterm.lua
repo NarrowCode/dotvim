@@ -16,7 +16,7 @@ local arch = os.getenv("OS")
 if (arch == "Windows_NT") then
   config.default_prog = { "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" }
   config.font = wezterm.font { family = 'IosevkaTerm NF' }
-  config.font_size = 11.0
+  config.font_size = 12.0
   config.initial_cols = 200
   config.initial_rows = 70
 else

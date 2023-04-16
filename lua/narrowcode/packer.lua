@@ -42,7 +42,6 @@ return require('packer').startup(function(use)
 
   use { "sainnhe/gruvbox-material" }
 
-  -- ... and one to play around with
   use {
     'olivercederborg/poimandres.nvim',
     config = function()
@@ -54,6 +53,8 @@ return require('packer').startup(function(use)
       --vim.cmd.colorscheme "poimandres"
     end
   }
+
+  use "EdenEast/nightfox.nvim"
 
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
   use('nvim-treesitter/playground')
