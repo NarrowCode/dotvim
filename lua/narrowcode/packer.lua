@@ -164,4 +164,6 @@ return require('packer').startup(function(use)
   use { "onsails/lspkind-nvim" }
 
   use("github/copilot.vim")
+
+  use 'simrat39/symbols-outline.nvim'
 end)

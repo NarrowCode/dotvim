@@ -98,7 +98,7 @@ lsp.set_preferences({
   }
 })
 
-
+require("symbols-outline").setup()
 
 lsp.on_attach(function(client, bufnr)
   local opts = { buffer = bufnr, remap = false }
@@ -117,6 +117,7 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-s>", function() vim.lsp.buf.completion() end, opts)
   vim.keymap.set("i", "<C-Space>", function() vim.lsp.buf.completion() end, opts)
   vim.keymap.set("n", "<leader>gl", function() require("lsp_lines").toggle() end, opts)
+  vim.keymap.set('n', '<leader>so', ':SymbolsOutline<CR>', { noremap = true, silent = true })
 
   vim.api.nvim_create_autocmd("BufWritePre", {
     buffer = bufnr,
@@ -142,6 +143,7 @@ vim.diagnostic.config({
 })
 
 require("lsp_lines").setup()
+
 
 
 -- local null_ls = require("null-ls")
