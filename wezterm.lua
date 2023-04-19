@@ -12,20 +12,35 @@ end
 
 -- This is where you actually apply your config choices
 
+config.window_background_opacity = 0.8
+config.tab_bar_at_bottom = true
+
 local arch = os.getenv("OS")
 if (arch == "Windows_NT") then
   config.default_prog = { "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" }
-  config.font = wezterm.font { family = 'IosevkaTerm NF' }
+  config.font = wezterm.font_with_fallback {
+    { family = 'IosevkaTerm NF', weight = 'Medium' },
+    'Hack NF',
+    'CaskaydiaCove NF',
+    'Consolas',
+  }
+
   config.font_size = 12.0
   config.initial_cols = 200
   config.initial_rows = 70
+  config.win32_system_backdrop = 'Acrylic'
 else
   config.default_prog = { "/bin/sh" }
   config.font = wezterm.font("Iosevka")
+  config.font = wezterm.font_with_fallback {
+    { family = 'IosevkaTerm', weight = 'Medium' },
+    'Hack Nerd Font',
+    'San Francisco',
+  }
   config.font_size = 14.0
+  config.macos_window_background_blur = 30
 end
 
-config.window_background_opacity = 0.95
 
 -- Initial colorscheme is based on current system time.
 local hour = os.date("*t").hour;
@@ -33,8 +48,13 @@ if (hour > 6 and hour < 22) then
   config.color_scheme = "dayfox"
 else
   config.color_scheme = "carbonfox"
+  if (arch == "Windows_NT") then
+    config.window_background_opacity = 0
+    config.win32_system_backdrop = 'Mica'
+  end
 end
 
+local act = wezterm.action
 -- dpi = 192.0,
 --config.font_antialias = "Subpixel" -- None, Greyscale, Subpixel
 --config.font_hinting = "Full"  -- None, Vertical, VerticalSubpixel, Full
@@ -69,6 +89,21 @@ config.keys = {
   { key = "&",  mods = "LEADER|SHIFT", action = wezterm.action { CloseCurrentTab = { confirm = true } } },
   { key = "d",  mods = "LEADER",       action = wezterm.action { CloseCurrentPane = { confirm = true } } },
   { key = "x",  mods = "LEADER",       action = wezterm.action { CloseCurrentPane = { confirm = true } } },
+  {
+    key = 'r',
+    mods = 'LEADER',
+    action = act.PromptInputLine {
+      description = 'Enter new name for tab',
+      action = wezterm.action_callback(function(window, pane, line)
+        -- line will be `nil` if they hit escape without entering anything
+        -- An empty string if they just hit enter
+        -- Or the actual line of text they wrote
+        if line then
+          window:active_tab():set_title(line)
+        end
+      end),
+    },
+  },
 }
 
 -- and finally, return the configuration to wezterm
