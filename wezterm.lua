@@ -41,16 +41,15 @@ else
   config.macos_window_background_blur = 30
 end
 
-
 -- Initial colorscheme is based on current system time.
 local hour = os.date("*t").hour;
-if (hour > 6 and hour < 22) then
+if (hour > 8 and hour < 18) then
   config.color_scheme = "dayfox"
 else
   config.color_scheme = "carbonfox"
   if (arch == "Windows_NT") then
-    config.window_background_opacity = 0
-    config.win32_system_backdrop = 'Mica'
+    config.window_background_opacity = 0.93
+    config.win32_system_backdrop = 'Disable'
   end
 end
 
