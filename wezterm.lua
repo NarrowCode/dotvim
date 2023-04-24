@@ -43,7 +43,7 @@ end
 
 -- Initial colorscheme is based on current system time.
 local hour = os.date("*t").hour;
-if (hour > 8 and hour < 18) then
+if (hour > 7 and hour < 18) then
   config.color_scheme = "dayfox"
 else
   config.color_scheme = "carbonfox"

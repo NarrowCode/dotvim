@@ -77,7 +77,7 @@ vim.keymap.set("n", "<leader>dt", function() ApplyColorScheme("dark") end);
 function ApplyColorSchemeAuto()
   -- Initial colorscheme is based on current system time.
   local hour = os.date("*t").hour;
-  if (hour > 8 and hour < 18) then
+  if (hour > 7 and hour < 18) then
     ApplyColorScheme("light")
   else
     ApplyColorScheme("dark")
