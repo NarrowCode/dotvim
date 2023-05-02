@@ -41,17 +41,37 @@ else
   config.macos_window_background_blur = 30
 end
 
--- Initial colorscheme is based on current system time.
-local hour = os.date("*t").hour;
-if (hour > 7 and hour < 18) then
-  config.color_scheme = "dayfox"
-else
-  config.color_scheme = "carbonfox"
-  if (arch == "Windows_NT") then
-    config.window_background_opacity = 0.93
-    config.win32_system_backdrop = 'Disable'
+if (arch == "Windows_NT") then
+  config.window_background_opacity = 0.97
+  config.win32_system_backdrop = 'Disable'
+end
+
+-- Initialize based on system time
+function scheme_for_time()
+  local hour = os.date("*t").hour;
+  if (hour > 7 and hour < 18) then
+    return 'Light'
+  else
+    return 'Dark'
   end
 end
+
+function get_appearance()
+  if wezterm.gui then
+    return wezterm.gui.get_appearance()
+  end
+  return scheme_for_time()
+end
+
+function scheme_for_appearance(appearance)
+  if appearance:find 'Dark' then
+    return 'Catppuccin Frappe' -- 'nightfox'
+  else
+    return 'carbonfox'
+  end
+end
+
+config.color_scheme = scheme_for_appearance(get_appearance())
 
 local act = wezterm.action
 -- dpi = 192.0,
@@ -86,7 +106,6 @@ config.keys = {
   { key = "8",  mods = "LEADER",       action = wezterm.action { ActivateTab = 7 } },
   { key = "9",  mods = "LEADER",       action = wezterm.action { ActivateTab = 8 } },
   { key = "&",  mods = "LEADER|SHIFT", action = wezterm.action { CloseCurrentTab = { confirm = true } } },
-  { key = "d",  mods = "LEADER",       action = wezterm.action { CloseCurrentPane = { confirm = true } } },
   { key = "x",  mods = "LEADER",       action = wezterm.action { CloseCurrentPane = { confirm = true } } },
   {
     key = 'r',

@@ -67,5 +67,7 @@ vnoremap <leader>P "+p
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 
+imap <C-c> <C-r>+
+
 set updatetime=200
 

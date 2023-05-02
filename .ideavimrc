@@ -16,6 +16,10 @@ nnoremap <leader>rn :action RenameElement<CR>
 " Essential
 nmap gh <Action>(QuickJavaDoc)
 nmap ge <Action>(ShowErrorDescription)
+nmap gr <Action>(FindUsages)
+nmap zc <Action>(HideActiveWindow)
+
+inoremap <C-y> <Action>(EditorChooseLookupItem)
 
 " Best movement ever
 nmap g[ <Action>(GotoNextError)

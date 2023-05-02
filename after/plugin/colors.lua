@@ -3,7 +3,7 @@ function ApplyColorScheme(color)
   if (color == "light") then
     color = "dayfox";
   elseif (color == "dark") then
-    color = "nordfox";
+    color = "catppuccin";
   else
     color = color or "gruvbox-material"
   end
@@ -50,17 +50,17 @@ function ApplyColorScheme(color)
 
   if (color == "catppuccin") then
     require("catppuccin").setup({
-      flavour = "latte",
+      flavour = "mocha",
       transparent_background = true,
     })
 
     require("lualine").setup({
       options = {
-        theme = "onelight" --"modus-vivendi",
+        theme = "modus-vivendi" --"modus-vivendi",
       }
     })
 
-    vim.opt.background = "light"
+    vim.opt.background = "dark"
   end
 
   vim.cmd.colorscheme(color)
