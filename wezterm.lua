@@ -12,7 +12,7 @@ end
 
 -- This is where you actually apply your config choices
 
-config.window_background_opacity = 0.8
+config.window_background_opacity = 0.85
 config.tab_bar_at_bottom = true
 
 local arch = os.getenv("OS")
@@ -30,15 +30,15 @@ if (arch == "Windows_NT") then
   config.initial_rows = 70
   config.win32_system_backdrop = 'Acrylic'
 else
-  config.default_prog = { "/bin/sh" }
+  --config.default_prog = { "/bin/sh" }
   config.font = wezterm.font("Iosevka")
   config.font = wezterm.font_with_fallback {
-    { family = 'IosevkaTerm', weight = 'Medium' },
+    { family = 'Iosevka', weight = 'Medium' },
     'Hack Nerd Font',
     'San Francisco',
   }
   config.font_size = 14.0
-  config.macos_window_background_blur = 30
+  config.macos_window_background_blur = 10
 end
 
 if (arch == "Windows_NT") then
