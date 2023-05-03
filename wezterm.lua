@@ -33,7 +33,8 @@ else
   --config.default_prog = { "/bin/sh" }
   config.font = wezterm.font("Iosevka")
   config.font = wezterm.font_with_fallback {
-    { family = 'Iosevka', weight = 'Medium' },
+    { family = 'JetBrainsMono Nerd Font', weight = 'Regular' },
+    { family = 'Iosevka', weight = "Medium" },
     'Hack Nerd Font',
     'San Francisco',
   }
