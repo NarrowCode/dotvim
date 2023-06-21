@@ -166,4 +166,8 @@ return require('packer').startup(function(use)
   use("github/copilot.vim")
 
   use 'simrat39/symbols-outline.nvim'
+
+  use 'airblade/vim-gitgutter'
+
+  use 'akinsho/bufferline.nvim'
 end)

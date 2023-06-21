@@ -7,6 +7,7 @@
 :set scrolloff=8
 :set visualbell
 :set noerrorbells
+:set highlightedyank
 
 nnoremap <leader>w :action ReformatCode<CR> :write<CR>
 nnoremap <leader>w :w<CR>

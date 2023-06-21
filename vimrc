@@ -69,5 +69,9 @@ vnoremap <leader>d "_d
 
 imap <C-c> <C-r>+
 
+" Navigate buffers
+nnoremap <S-l> :bnext<CR>
+nnoremap <S-h> :bprevious<CR>
+
 set updatetime=200
 

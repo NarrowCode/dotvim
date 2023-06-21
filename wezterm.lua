@@ -12,7 +12,11 @@ end
 
 -- This is where you actually apply your config choices
 
-config.window_background_opacity = 0.85
+config.window_background_opacity = 0.95
+config.window_background_gradient = {
+  colors = { '#1e1f20', '#1e1f20' },
+  orientation = { Linear = { angle = -45.0 } },
+}
 config.tab_bar_at_bottom = true
 
 local arch = os.getenv("OS")
@@ -40,6 +44,7 @@ else
   }
   config.font_size = 14.0
   config.macos_window_background_blur = 10
+  config.window_decorations = "RESIZE"
 end
 
 if (arch == "Windows_NT") then
@@ -66,9 +71,9 @@ end
 
 function scheme_for_appearance(appearance)
   if appearance:find 'Dark' then
-    return 'Catppuccin Frappe' -- 'nightfox'
+    return 'Gruvbox dark, medium (base16)' -- 'nightfox'
   else
-    return 'carbonfox'
+    return 'Gruvbox dark, medium (base16)'
   end
 end
 

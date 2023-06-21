@@ -7,7 +7,7 @@
 --
 
 vim.cmd [[highlight IndentBlanklineContextChar guifg=#C678DD gui=nocombine]]
-vim.cmd [[highlight IndentBlanklineIndent guifg=#2c323c gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent guifg=#2c3238 gui=nocombine]]
 
 vim.opt.list = true
 --vim.opt.listchars:append "space:⋅"

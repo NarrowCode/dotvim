@@ -3,7 +3,7 @@ function ApplyColorScheme(color)
   if (color == "light") then
     color = "dayfox";
   elseif (color == "dark") then
-    color = "catppuccin";
+    color = "gruvbox-material";
   else
     color = color or "gruvbox-material"
   end
@@ -11,7 +11,7 @@ function ApplyColorScheme(color)
   if (color == "gruvbox-material") then
     vim.opt.background = "dark"
     vim.api.nvim_set_var("gruvbox_material_background", "hard")
-    vim.api.nvim_set_var("gruvbox_material_transparent_background", 2)
+    vim.api.nvim_set_var("gruvbox_material_transparent_background", 1)
 
     require("lualine").setup({
       options = {
@@ -65,6 +65,9 @@ function ApplyColorScheme(color)
 
   vim.cmd.colorscheme(color)
 
+  vim.cmd [[highlight IndentBlanklineContextChar guifg=#C678DD gui=nocombine]]
+  vim.cmd [[highlight IndentBlanklineIndent guifg=#2c3238 gui=nocombine]]
+
   --vim.api.nvim_set_hl(0, "Normal", { bg = "#181b1d" })
   --vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#181b1d" })
   --vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -84,4 +87,4 @@ function ApplyColorSchemeAuto()
   end
 end
 
-ApplyColorSchemeAuto()
+ApplyColorScheme("dark")
