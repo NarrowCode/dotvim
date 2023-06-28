@@ -1,0 +1,48 @@
+snippet fc "Foundation component"
+	import { ${1:camelCaseName}View } from "./${2:kebab-case-name}.view";
+	import { ${1:camelCaseName}ViewModel } from "./${2:kebab-case-name}.vm";
+	import { createModule } from "@common/foundation";
+
+	export const ${1:camelCaseName}Module = createModule(
+		${1:camelCaseName}View,
+		${1:camelCaseName}ViewModel,
+		{},
+	);
+
+snippet fcvm "Foundation component - ViewModel"
+	import { ViewModel } from "@common/foundation";
+
+	export type ${1:camelCaseName}ViewModelDeps = {
+		// Insert dependencies here.
+	};
+
+	export type ${1:camelCaseName}ViewModelProps = {
+		// Insert props here.
+	};
+
+	export class ${1:camelCaseName}ViewModel extends ViewModel {
+		constructor(deps: ${1:camelCaseName}ViewModelDeps, props: ${1:camelCaseName}ViewModelProps) {
+			super();
+			makeAutoObservable(this);
+		}
+
+		onUpdateProps(props: ${1:camelCaseName}ViewModelProps) {
+			
+		}
+	}
+
+snippet fcview "Foundation component - View"
+	import { ${1:camelCaseName}ViewModel } from "./${2:kebab-case-name}.vm";
+	import { observer } from "mobx-react-lite";
+
+	type ${1:camelCaseName}ViewProps = {
+		viewModel: ${1:camelCaseName}ViewModel;
+	};
+
+	export const ${1:camelCaseName}View = observer((props: ${1:camelCaseName}ViewProps) => {
+		return (
+			<div>
+				${3}
+			</div>
+		);
+	});

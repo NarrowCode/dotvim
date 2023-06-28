@@ -1,5 +1,11 @@
 local lsp = require("lsp-zero")
 local lspkind = require('lspkind')
+local ls = require("luasnip")
+require("luasnip.loaders.from_snipmate").load()
+require("luasnip.loaders.from_snipmate").lazy_load { paths = { "~/.vim/snippets" } }
+
+ls.filetype_extend("all", { "snippets" })
+
 
 lsp.preset("recommended")
 
@@ -39,11 +45,21 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
   ["<C-Space>"] = cmp.mapping.complete(),
   -- Add compatibility fallback for terminals that can't handle Ctrl-Space
   ["<C-s>"] = cmp.mapping.complete(),
+  ["<C-.>"] = cmp.mapping(function(fallback)
+    if ls.expand_or_jumpable() then
+      ls.expand_or_jump()
+    end
+  end, { "i", "s" }),
+  ["<C_,>"] = cmp.mapping(function(fallback)
+    if ls.jumpable(-1) then
+      ls.jump(-1)
+    end
+  end, { "i", "s" }),
 })
 
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<CR>'] = nil
-cmp_mappings['<S-Tab>'] = nil
+-- cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
   mapping = cmp_mappings,
@@ -86,7 +102,17 @@ lsp.setup_nvim_cmp({
       end
     })
   },
+  snippet = {
+    expand = function(args)
+      ls.lsp_expand(args.body)
+    end,
+  },
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+  }
 })
+
 
 lsp.set_preferences({
   suggest_lsp_servers = false,
@@ -143,7 +169,6 @@ vim.diagnostic.config({
 })
 
 require("lsp_lines").setup()
-
 
 
 -- local null_ls = require("null-ls")

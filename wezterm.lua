@@ -36,13 +36,15 @@ if (arch == "Windows_NT") then
 else
   --config.default_prog = { "/bin/sh" }
   config.font = wezterm.font("Iosevka")
+
   config.font = wezterm.font_with_fallback {
+    { family = 'IBM Plex Mono', weight = "Regular", harfbuzz_features = { 'liga=0' } },
+    { family = 'IosevkaTerm Nerd Font', weight = "Medium" },
     { family = 'JetBrainsMono Nerd Font', weight = 'Regular' },
-    { family = 'Iosevka', weight = "Medium" },
     'Hack Nerd Font',
     'San Francisco',
   }
-  config.font_size = 14.0
+  config.font_size = 15.0
   config.macos_window_background_blur = 10
   config.window_decorations = "RESIZE"
 end

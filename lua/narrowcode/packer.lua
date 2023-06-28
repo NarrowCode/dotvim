@@ -1,6 +1,5 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
-
 -- Packer bootstrapping
 
 local ensure_packer = function()
@@ -33,8 +32,8 @@ return require('packer').startup(function(use)
     requires = {
       { 'nvim-lua/plenary.nvim' },
       { 'nvim-tree/nvim-web-devicons' },
+      { 'nvim-telescope/telescope-live-grep-args.nvim' },
     }
-
   }
 
   -- The best color scheme
@@ -170,4 +169,10 @@ return require('packer').startup(function(use)
   use 'airblade/vim-gitgutter'
 
   use 'akinsho/bufferline.nvim'
+
+  use ({
+    'l3mon4d3/luasnip',
+    run = "make install_jsregexp",
+  })
+
 end)
