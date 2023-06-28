@@ -140,26 +140,6 @@ return require('packer').startup(function(use)
     end
   }
 
-  use {
-    "nvim-neorg/neorg",
-    run = ":Neorg sync-parsers",
-    config = function()
-      require('neorg').setup {
-        load = {
-          ["core.defaults"] = {},       -- Loads default behaviour
-          ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
-          ["core.norg.dirman"] = {      -- Manages Neorg workspaces
-            config = {
-              workspaces = {
-                notes = "~/org",
-              },
-            },
-          },
-        },
-      }
-    end
-  }
-
   use { "onsails/lspkind-nvim" }
 
   use("github/copilot.vim")

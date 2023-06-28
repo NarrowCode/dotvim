@@ -1,8 +1,65 @@
 local builtin = require('telescope.builtin')
 local lga_actions = require("telescope-live-grep-args.actions")
 
+local pickers = require('telescope.pickers')
+local finders = require('telescope.finders')
+local sorters = require('telescope.sorters')
+local actions = require('telescope.actions')
+
+-- define your keybindings
+local keybindings = {
+  {"<leader>ff", "[TELESCOPE] Find files in the current directory"},
+  {"<leader>bf", "[TELESCOPE] List current buffers"},
+  {"<leader>sy", "[TELESCOPE] List document symbols"},
+  {"<leader>tp", "[TELESCOPE] List builtin telescope commands"},
+  {"<leader>ps", "[TELESCOPE] String grep"},
+  {"<leader>fg", "[TELESCOPE] Live grep with rg support"},
+  {"<C>p", "[TELESCOPE] List Git files"},
+
+  {"<leader>gd", "[GIT] Git diff to HEAD"},
+  {"<leader>ll", "[LSP] Toggle LSP lines newline / inline"},
+  {"<leader>lo", "[LSP] Toggle LSP lines on / off"},
+
+  {"<leader>gs", "[GIT] Open Neogit"},
+
+  {"<leader>xx", "[DIA] Trouble Toggle"},
+  {"<leader>xw", "[DIA] Workspace Diagnostics"},
+  {"<leader>xd", "[DIA] Document Diagnostics"},
+  {"<leader>xl", "[DIA] Loclist"},
+  {"<leader>xq", "[DIA] Quickfix"},
+  {"gR", "[DIA] LSP References"},
+
+  -- add your other keybinds here
+}
+
+function ShowKeybindings()
+  pickers.new({}, {
+    prompt_title = 'Keybindings',
+    finder = finders.new_table({
+      results = keybindings,
+      entry_maker = function(entry)
+        return {
+          value = entry[1],
+          display = entry[1] .. " - " .. entry[2],
+          ordinal = entry[1] .. " - " .. entry[2],
+        }
+      end,
+    }),
+    sorter = sorters.get_generic_fuzzy_sorter(),
+    attach_mappings = function(_, map)
+      map('i', '<CR>', actions.close)
+      return true
+    end,
+  }):find()
+end
+
+
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+vim.keymap.set('n', '<leader>bf', builtin.buffers, {})
+vim.keymap.set('n', '<leader>sy', builtin.lsp_document_symbols, {})
+vim.keymap.set('n', '<leader>tp', builtin.builtin, {})
+vim.keymap.set('n', '<leader>k', '<cmd>lua ShowKeybindings()<CR>', {noremap = true, silent = true})
 
 -- This requires `ripgrep` to be installed
 vim.keymap.set('n', '<leader>ps', function()
@@ -31,6 +88,15 @@ telescope.setup {
       mappings = {
         i = { ["<C-l>"] = lga_actions.quote_prompt({ postfix = " --iglob " }) },
       },
+    },
+  },
+
+  pickers = {
+    find_files = {
+      path_display = { shorten = { len = 5, exclude = {1, -1} } },
+    },
+    git_files = {
+      path_display = { shorten = { len = 5, exclude = {1, -1} } },
     },
   }
 }

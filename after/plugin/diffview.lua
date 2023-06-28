@@ -3,6 +3,10 @@ vim.keymap.set("n", "<leader>gd", "<cmd>:DiffviewOpen develop...HEAD<cr>",
   {silent = true, noremap = true}
 )
 
+vim.keymap.set("n", "<leader>gb", "<cmd>:DiffviewOpen<cr>",
+  {silent = true, noremap = true}
+)
+
 
 -- Diff from HEAD to arbitrary target
 function diffTarget()
