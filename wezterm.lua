@@ -18,6 +18,8 @@ config.window_background_gradient = {
   orientation = { Linear = { angle = -45.0 } },
 }
 config.tab_bar_at_bottom = true
+config.use_fancy_tab_bar = false
+
 
 local arch = os.getenv("OS")
 if (arch == "Windows_NT") then
@@ -47,7 +49,13 @@ else
   config.font_size = 15.0
   config.macos_window_background_blur = 10
   config.window_background_opacity = 1
-  config.window_decorations = "RESIZE"
+  config.window_decorations = "TITLE | RESIZE | MACOS_FORCE_DISABLE_SHADOW"
+  config.window_padding = {
+    left = 20,
+    right = 20,
+    top = 10,
+    bottom = 10,
+  }
 end
 
 if (arch == "Windows_NT") then
@@ -131,6 +139,14 @@ config.keys = {
       end),
     },
   },
+  { key = "1", mods = "CTRL|ALT", action = wezterm.action.MoveTab(0) },
+  { key = "2", mods = "CTRL|ALT", action = wezterm.action.MoveTab(1) },
+  { key = "3", mods = "CTRL|ALT", action = wezterm.action.MoveTab(2) },
+  { key = "4", mods = "CTRL|ALT", action = wezterm.action.MoveTab(3) },
+  { key = "5", mods = "CTRL|ALT", action = wezterm.action.MoveTab(4) },
+  { key = "6", mods = "CTRL|ALT", action = wezterm.action.MoveTab(5) },
+  { key = "7", mods = "CTRL|ALT", action = wezterm.action.MoveTab(6) },
+  { key = "8", mods = "CTRL|ALT", action = wezterm.action.MoveTab(7) },
 }
 
 -- and finally, return the configuration to wezterm
