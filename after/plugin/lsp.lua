@@ -150,7 +150,7 @@ lsp.on_attach(function(client, bufnr)
     callback = function()
       --vim.cmd("LspZeroFormat", { silent = true })
       -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-      vim.lsp.buf.format({ bufnr = bufnr })
+      vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 5000, async = false })
       --vim.lsp.buf.formatting_sync()
     end,
   })
