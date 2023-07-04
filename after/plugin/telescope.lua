@@ -53,9 +53,48 @@ function ShowKeybindings()
   }):find()
 end
 
+local function find_files_short()
+  builtin.find_files({
+    path_display = { shorten = { len = 5, exclude = {1, -1} } },
+    attach_mappings = function(_, map)
+      map('i', '<CR>', actions.select_default + actions.center)
+      return true
+    end,
+  })
+end
 
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+local function find_files_full()
+  builtin.find_files({
+    attach_mappings = function(_, map)
+      map('i', '<CR>', actions.select_default + actions.center)
+      return true
+    end,
+  })
+end
+
+local function find_git_short()
+  builtin.git_files({
+    path_display = { shorten = { len = 5, exclude = {1, -1} } },
+    attach_mappings = function(_, map)
+      map('i', '<CR>', actions.select_default + actions.center)
+      return true
+    end,
+  })
+end
+
+local function find_git_full()
+  builtin.git_files({
+    attach_mappings = function(_, map)
+      map('i', '<CR>', actions.select_default + actions.center)
+      return true
+    end,
+  })
+end
+
+vim.keymap.set('n', '<leader>ff', find_files_short, {})
+vim.keymap.set('n', '<leader>FF', find_files_full, {})
+vim.keymap.set('n', '<C-p>', find_git_short, {})
+vim.keymap.set('n', '<C-del>', find_git_full, {})
 vim.keymap.set('n', '<leader>bf', builtin.buffers, {})
 vim.keymap.set('n', '<leader>sy', builtin.lsp_document_symbols, {})
 vim.keymap.set('n', '<leader>tp', builtin.builtin, {})
@@ -90,13 +129,4 @@ telescope.setup {
       },
     },
   },
-
-  pickers = {
-    find_files = {
-      path_display = { shorten = { len = 5, exclude = {1, -1} } },
-    },
-    git_files = {
-      path_display = { shorten = { len = 5, exclude = {1, -1} } },
-    },
-  }
 }

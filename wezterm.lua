@@ -49,7 +49,7 @@ else
   config.font_size = 15.0
   config.macos_window_background_blur = 10
   config.window_background_opacity = 1
-  config.window_decorations = "TITLE | RESIZE | MACOS_FORCE_DISABLE_SHADOW"
+  config.window_decorations = "TITLE | RESIZE"
   config.window_padding = {
     left = 20,
     right = 20,

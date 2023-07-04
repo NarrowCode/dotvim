@@ -145,15 +145,19 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>gl", function() require("lsp_lines").toggle() end, opts)
   vim.keymap.set('n', '<leader>so', ':SymbolsOutline<CR>', { noremap = true, silent = true })
 
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    buffer = bufnr,
-    callback = function()
-      --vim.cmd("LspZeroFormat", { silent = true })
-      -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-      vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 5000, async = false })
-      --vim.lsp.buf.formatting_sync()
-    end,
-  })
+  vim.keymap.set('n', '<leader>e', function()
+    vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 5000, async = false })
+  end, opts)
+
+  --vim.api.nvim_create_autocmd("BufWritePre", {
+  --  buffer = bufnr,
+  --  callback = function()
+  --    --vim.cmd("LspZeroFormat", { silent = true })
+  --    -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+  --    vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 5000, async = false })
+  --    --vim.lsp.buf.formatting_sync()
+  --  end,
+  --})
 end)
 
 lsp.setup()

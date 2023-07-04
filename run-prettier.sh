@@ -14,10 +14,10 @@ fi
 
 # Attempt to run local prettier
 if yarn prettier --version > /dev/null 2>&1; then
-    echo "$(yarn prettier --version) at $(yarn bin prettier) with $@" >> ~/.vim/prettier-log.txt
+    # echo "$(yarn prettier --version) at $(yarn bin prettier) with $@" >> ~/.vim/prettier-log.txt
     yarn prettier "$@" # | tee -a ~/.vim/prettier-exec-log.txt
 else
     # Fallback to global prettier
-    echo "$(prettier --version) at $(which prettier) with $@" >> ~/.vim/prettier-log.txt
+    # echo "$(prettier --version) at $(which prettier) with $@" >> ~/.vim/prettier-log.txt
     prettier "$@" # | tee -a ~/.vim/prettier-exec-log.txt
 fi
