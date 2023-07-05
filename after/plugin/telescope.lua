@@ -98,6 +98,7 @@ vim.keymap.set('n', '<C-del>', find_git_full, {})
 vim.keymap.set('n', '<leader>bf', builtin.buffers, {})
 vim.keymap.set('n', '<leader>sy', builtin.lsp_document_symbols, {})
 vim.keymap.set('n', '<leader>tp', builtin.builtin, {})
+vim.keymap.set('n', 'gr', builtin.lsp_references, {})
 vim.keymap.set('n', '<leader>k', '<cmd>lua ShowKeybindings()<CR>', {noremap = true, silent = true})
 
 -- This requires `ripgrep` to be installed
